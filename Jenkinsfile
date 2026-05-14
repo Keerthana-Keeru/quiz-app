@@ -38,12 +38,6 @@ pipeline {
                 sh 'ls -l target/'
             }
         }
-
-        stage('Run Application') {
-            steps {
-                sh 'java -jar target/quiz-app-1.0-SNAPSHOT.jar'
-            }
-        }
     }
 
     post {
