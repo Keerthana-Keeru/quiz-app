@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #ff6ec4,
+        #7873f5,
+        #42e695,
+        #f9ca24
+    );
+
+    background-size: 400% 400%;
+
+    animation: gradientBG 12s ease infinite;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.container {
+    width: 90%;
+    max-width: 850px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(12px);
+
+    border-radius: 25px;
+
+    padding: 40px;
+
+    color: white;
+
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+
+    animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 40px;
+}
+h2, h3 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    margin-top: 25px;
+    margin-bottom: 10px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+    margin-top: 20px;
+
+    font-size: 18px;
+}
+
+input[type="radio"] {
+    margin-top: 10px;
+    margin-right: 10px;
+
+    transform: scale(1.2);
+}
+button {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 35px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        45deg,
+        #ff512f,
+        #dd2476
+    );
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+}
+
+button:hover {
+    transform: scale(1.03);
+
+    background: linear-gradient(
+        45deg,
+        #24c6dc,
+        #514a9d
+    );
+}
+label {
+    font-size: 18px;
+}
+
+
+
