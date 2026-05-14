@@ -43,11 +43,47 @@ pipeline {
     post {
 
         success {
-            echo 'Quiz App CI/CD Pipeline Executed Successfully!'
+            emailext (
+                subject: "SUCCESS: ${JOB_NAME} #${BUILD_NUMBER}",
+                body: """
+Hello Keeru,
+
+Your Quiz App CI/CD Pipeline executed successfully!
+
+Project: ${JOB_NAME}
+Build Number: ${BUILD_NUMBER}
+
+Build URL:
+${BUILD_URL}
+
+Maven build, test, and package completed successfully.
+
+Regards,
+Jenkins
+""",
+                to: "keerthanakeeru200509@gmail.com"
+            )
         }
 
         failure {
-            echo 'Pipeline Failed!'
+            emailext (
+                subject: "FAILED: ${JOB_NAME} #${BUILD_NUMBER}",
+                body: """
+Hello Keeru,
+
+Your Quiz App Pipeline failed.
+
+Project: ${JOB_NAME}
+Build Number: ${BUILD_NUMBER}
+
+Check build logs here:
+${BUILD_URL}
+
+Regards,
+Jenkins
+""",
+                to: "keerthanakeeru200509@gmail.com"
+            )
         }
     }
 }
