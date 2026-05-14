@@ -1,53 +1,47 @@
 pipeline {
-
     agent any
 
     tools {
-        jdk 'JDK21'
         maven 'Maven'
+        jdk 'JDK21'
     }
 
     stages {
 
-        stage('Check Java Version') {
+        stage('Checkout') {
             steps {
-                sh 'java -version'
+                git branch: 'master',
+                url: 'https://github.com/Keerthana-Keeru/quiz-app.git'
             }
         }
 
-        stage('Check Maven Version') {
+        stage('Build') {
             steps {
-                sh 'mvn -version'
+                sh 'mvn clean compile'
             }
         }
 
-        stage('Clean Project') {
-            steps {
-                sh 'mvn clean'
-            }
-        }
-
-        stage('Compile Project') {
-            steps {
-                sh 'mvn compile'
-            }
-        }
-
-        stage('Run Tests') {
+        stage('Test') {
             steps {
                 sh 'mvn test'
             }
         }
 
-        stage('Package Application') {
+        stage('Package') {
             steps {
                 sh 'mvn package'
             }
         }
 
-        stage('Verify Build') {
+        stage('Verify JAR') {
             steps {
                 sh 'ls -l target/'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                sh 'java -jar target/quiz-app-1.0-SNAPSHOT.jar'
             }
         }
     }
@@ -55,7 +49,7 @@ pipeline {
     post {
 
         success {
-            echo 'CI/CD Pipeline Executed Successfully!'
+            echo 'Quiz App CI/CD Pipeline Executed Successfully!'
         }
 
         failure {
